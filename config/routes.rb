@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  post 'user/update'
+  namespace :api, defaults: { format: :json } do
+    get '/users/show/:name', to: 'users#show'
+  end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  post 'user/update'
 end
