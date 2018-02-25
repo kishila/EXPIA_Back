@@ -3,6 +3,9 @@ class Api::UsersController < ApplicationController
     raise ArgumentError, 'invalid params' if params[:name].blank?
     @user = User.find_by(name: params[:name])
 
-    render json: @user
+    render json: {
+      name: @user.name,
+      profile_url: @user.profile_image.url
+    }
   end
 end
